@@ -40,19 +40,19 @@ void resetar_leds() {
     gpio_put(PINO_LED_VERMELHO, 0);
 }
 
-// Atualiza o display para mostrar a lista de funcionários
+// Função para desligar a matriz de LEDs
+void resetar_matriz_led() {
+    desligar_matriz();  // Chama a função para desligar todos os LEDs da matriz
+}
+
+// Atualiza o display para mostrar o funcionário selecionado
 void atualizar_display(ssd1306_t *display) {
     ssd1306_fill(display, false);
 
-    for (int i = 0; i < 3; i++) {
-        if (i == indice_funcionario) {
-            ssd1306_draw_string(display, "> ", 2, i * 20); // Indicador de seleção
-            ssd1306_draw_string(display, funcionarios[i].nome, 15, i * 20);
-        } else {
-            ssd1306_draw_string(display, funcionarios[i].nome, 15, i * 20);
-        }
-    }
+    Funcionario f = funcionarios[indice_funcionario];
 
+    // Exibe o nome do funcionário
+    ssd1306_draw_string(display, f.nome, 10, 20);
     ssd1306_send_data(display);
 }
 
@@ -92,12 +92,20 @@ void funcao_botoes(uint pino, uint32_t eventos) {
     ultima_vez = tempo_atual;
 
     if (pino == PINO_BOTAO_A) {
-        // Desliga os LEDs antes de trocar de funcionário
-        resetar_leds();
-        indice_funcionario = (indice_funcionario + 1) % 3;
-        funcionario_selecionado = false;
+        // Ao pressionar o Botão A, alterna para o próximo funcionário
+        if (!funcionario_selecionado) {
+            indice_funcionario = (indice_funcionario + 1) % 3; // Alterna entre os 3 funcionários
+        }
     } else if (pino == PINO_BOTAO_B) {
-        funcionario_selecionado = true;
+        if (funcionario_selecionado) {
+            // Se estamos no modo de exibição de dados, volta para o menu de funcionários
+            funcionario_selecionado = false;
+            resetar_leds();         // Desliga os LEDs ao voltar para o menu
+            resetar_matriz_led();   // Desliga a matriz de LEDs ao voltar para o menu
+        } else {
+            // Se estamos no menu, exibe os dados do funcionário selecionado
+            funcionario_selecionado = true;
+        }
     }
 }
 
@@ -133,9 +141,9 @@ int main(void) {
 
     while (true) {
         if (funcionario_selecionado) {
-            exibir_dados_funcionario(&display);
+            exibir_dados_funcionario(&display);  // Exibe os dados do funcionário selecionado
         } else {
-            atualizar_display(&display);
+            atualizar_display(&display);  // Exibe o nome do funcionário selecionado
         }
         sleep_ms(100);
     }

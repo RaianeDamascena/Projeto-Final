@@ -16,7 +16,7 @@ void enviar_pixel(uint32_t pixel_grb) {
 }
 
 void mostrar_numero(uint8_t num) {
-    uint32_t cor = rgb_para_uint32(64, 64, 64);
+    uint32_t cor = rgb_para_uint32(32, 32, 32);
 
     for (int linha = 0; linha < 5; linha++) {  // Configurações de linhas e colunas da matriz de LED
         for (int coluna = 0; coluna < 5; coluna++) {

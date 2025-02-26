@@ -33,7 +33,7 @@ Funcionario funcionarios[3] = {
     {"Funcionario 3", 2}
 };
 
-// Função para desligar todos os LEDs antes de acender o correto
+// Função para desligar todos os LEDs
 void resetar_leds() {
     gpio_put(PINO_LED_VERDE, 0);
     gpio_put(PINO_LED_AZUL, 0);

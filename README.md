@@ -80,6 +80,10 @@ Reiniciar a placa para iniciar a execução
 
 O programa inicia configurando os periféricos, incluindo GPIOs, I2C e o display SSD1306. O loop principal verifica se um funcionário foi selecionado e exibe as informações correspondentes no display e na matriz de LEDs. Os botões permitem navegar entre os funcionários e exibir seus dados detalhados.
 
+## LINK DE FUNCIONAMENTO NA PLACA BITDOGLAB
+
+https://drive.google.com/drive/folders/1z5mS1UeKbmzO3Food0HfI18YGeQQWOtI?usp=sharing
+
 ## Autor
 
 Desenvolvido por Raiane Damascena da Paixão para o curso do Embarcatech de Sistemas Embarcados, como parte do projeto final para conclusão da primeira fase.

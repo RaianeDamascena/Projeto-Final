@@ -83,6 +83,8 @@ O programa inicia configurando os periféricos, incluindo GPIOs, I2C e o display
 ## Autor
 
 Desenvolvido por Raiane Damascena da Paixão para o curso do Embarcatech de Sistemas Embarcados, como parte do projeto final para conclusão da primeira fase.
+
 Matricula: tic370100668
+
 Email: rai.paixao2012@gmail.com
 

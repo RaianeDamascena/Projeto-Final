@@ -18,37 +18,17 @@ LEDs RGB para indicar o status de desempenho
 
 ## Configuração de Hardware
 
-Componente
+Componentes:
 
 GPIO
 
-SDA (I2C)
-
-14
-
-SCL (I2C)
-
-15
-
-Botão A
-
-5
-
-Botão B
-
-6
-
-LED Verde
-
-11
-
-LED Azul
-
-12
-
-LED Vermelho
-
-13
+SDA (I2C): 14
+SCL (I2C): 15
+Botão A: 5
+Botão B: 6
+LED Verde: 11
+LED Azul: 12
+LED Vermelho: 13
 
 ## Funcionalidades
 
